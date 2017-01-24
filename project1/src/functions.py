@@ -10,7 +10,7 @@ def ff(x):
 def exact(x):
     return 1.0-(1-math.exp(-10))*x-math.exp(-10*x)
 
-i = 3
+i = 5
 n = 10**i
 h = 1.0/(n)
 hh = h*h
@@ -56,4 +56,5 @@ lst3 = exact_results[1:]
 lst4 = errors
 
 table = pandas.DataFrame({'x': lst1, 'Computed': lst2, 'Exact': lst3,'Relative Error': lst4})
+
 print(table)
