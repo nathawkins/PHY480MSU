@@ -140,17 +140,96 @@ f_{4}\\
 And now we can look at solving $\mathbf{A}\mathbf{u} = \tilde{\mathbf{f}},$ through the process of Gaussian Elimination. For this process, reference (reference). In essence, we begin by multiplying the second row of $A$ by the ratio of the terms in the first column of rows one and two. Explicitly, this looks like $\frac{e_{1}}{d_{1}}$ on both the right hand side and left hand side. This transforms the equation into the following: 
 
 \[
-\begin{Bmatrix}
+\begin{bmatrix}
 d_{1}& e_{1}& 0& 0& \\
 0& d_{2}-\frac{e_{1}^{2}}{d_{1}}& e_{2}& 0& \\
 0& e_{2}& d_{3}& e_{3}& \\
 0& 0& e_{3}& d_{4}& \\
-\end{Bmatrix}
+\end{bmatrix}
 *
-\begin{Bmatrix}
-content...
-\end{Bmatrix}
+\begin{bmatrix}
+u_{1}\\
+u_{2} \\
+u_{3}\\
+u_{4}\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+f_{1}\\
+f_{2} - f_{1} \frac{e_{1}}{d_{1}} \\
+f_{3}\\
+f_{4}\\
+\end{bmatrix}
 \]
+
+We now can redefine $\tilde{d_{2}}= d_{2}-\frac{e_{1}^{2}}{d_{1}}$ and $\tilde{f_{2}} = f_{2} - f_{1} \frac{e_{1}}{d_{1}} $. This changes the matrix to a new form that we can use to repeat the process further.
+
+\[
+\begin{bmatrix}
+d_{1}& e_{1}& 0& 0& \\
+0& \tilde{d_{2}}& e_{2}& 0& \\
+0& e_{2}& d_{3}& e_{3}& \\
+0& 0& e_{3}& d_{4}& \\
+\end{bmatrix}
+*
+\begin{bmatrix}
+u_{1}\\
+u_{2} \\
+u_{3}\\
+u_{4}\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+f_{1}\\
+\tilde{f_{2}}\\
+f_{3}\\
+f_{4}\\
+\end{bmatrix}
+\]
+
+Now, we can perform the same operation and multiply the second row by $\frac{e_{2}}{\tilde{d_{2}}}$. As we now with Gaussian Elimination, the final result will be an upper triangular matrix of the form:
+
+\[
+\begin{bmatrix}
+	d_{1}& e_{1}& 0& 0& \\
+	0& \tilde{d_{2}}& e_{2}& 0& \\
+	0& 0& \tilde{d_{3}}& e_{3}& \\
+	0& 0& 0& \tilde{d_{4}}& \\
+\end{bmatrix}
+*
+\begin{bmatrix}
+	u_{1}\\
+	u_{2} \\
+	u_{3}\\
+	u_{4}\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+	f_{1}\\
+	\tilde{f_{2}}\\
+	\tilde{f_{3}}\\
+	\tilde{f_{4}}\\
+\end{bmatrix}
+\]
+
+At this point, we can begin the process of forward substitution and equate $\tilde{d_{4}} * u_{4} = \tilde{f}_{4}$. Using this value, we can solve for $u_{4}$ and then solve $\tilde{d_{3}} * u_{3} + \tilde{d_{4}} * u_{4} = \tilde{f}_{3}$ for $u_{3}$, and so on and so forth. With pre-populated arrays for $u$ and $f$, we now have our solution. This process yields the algorithms used in our program.
+
+
+\begin{align}
+\tilde{d_{i}} &= d_{i}-\frac{e_{i-1}^{2}}{d_{i-1}} \\
+\tilde{f_{i}} &= f_{i} - f_{i-1} \frac{e_{i-1}}{d_{i-1}} \\
+u_{i} &= \frac{	\tilde{f}_{i} - e_{i}u_{i+1}}{d_{3}}
+\end{align}
+
+Now we can use the fact that for our specific case all of the $e_{i}$ values are equal to -1 to simplify our algorithms. This also causes a drastic simplification for the $d_{i}$ values. 
+
+\begin{align}
+\tilde{d_{i}} &= \frac{i+1}{i} \\
+\tilde{f_{i}} &= f_{i} + f_{i-1} \frac{1}{d_{i-1}} \\
+u_{i} &= \frac{	\tilde{f}_{i} + u_{i+1}}{d_{3}}
+\end{align}
+
+Thus, we see a reduced floating point operation count down to $\approx 4n$. This is where the efficiency of this approach really becomes evident. 
 
 \subsection{Problem 1c}
 
