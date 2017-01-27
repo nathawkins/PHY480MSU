@@ -1,0 +1,2 @@
+Block tridiagonal matrix python. (n.d.). Retrieved January 27, 2017, from http://stackoverflow.com/questions/5842903/block-tridiagonal-matrix-python
+
