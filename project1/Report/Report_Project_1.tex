@@ -6,6 +6,7 @@
 \usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts,amssymb}
 \usepackage[table]{xcolor}
 \usepackage{bm,ltablex,microtype}
+\usepackage{placeins}
 
 \usepackage[top = 1in, bottom = 1in, right = 1in, left = 1in]{geometry}
 
@@ -228,7 +229,7 @@ u_{i} &= \frac{	\tilde{f}_{i} + u_{i+1}}{d_{3}}
 
 Thus, we see a reduced floating point operation count down to $\approx 4n$. This is where the efficiency of this approach really becomes evident. 
 
-Some examples of our code can be seen below:
+Some examples of our code can be seen in \textbf{Figure 1}.
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{codesample.png}
 	\caption{The figure above shows the iterative loops that we used in C++ to initialize these quantities and calculate further ones. Note the simplified algorithms were used in our code to reduce floating point operations.}
@@ -244,8 +245,8 @@ We calculated the relative error in the data set $i=1,\dots, n$,by setting up
 \epsilon_i=log_{10}\left(\left|\frac{v_i-u_i}
 {u_i}\right|\right),
 \]
-as function of $log_{10}(h)$ for the function values $u_i$ and $v_i$.
-For each step length, we saw that the error was pretty much a constant value. That meaning that for each value of $x$, the relative error was approximately the exact same. Since the error was the exact same for all x values, we elected to sample only one error entry \textbf{ specifically the first entry} for the sake of efficiency (i.e. $i=1, x= 0.1 \hspace{0.5cm} i=2, x = 0.01, etc.$). We were consistent with our choice, so whatever error that this may have imposed, we were at least consistent with this. We then conducted multiple trials utilizing values of $i$ ranging from $i=0$ to $i=8$. The results we got are below:
+as function of $log_{10}(h)$ for the function values $u_i$ and $v_i$. Here, it is important to note that the i value corresponds to the step size, $h$, as discussed above as $h = \frac{1.0}{n}$. The relative error was calculated for each power of ten, corresponding to an input value, $i$.
+For each step length, we saw that the error was pretty much a constant, meaning that for each value of $x$, the relative error was approximately the same. Since the error was the exact same for all x values, we elected to sample only one error entry \textbf{ specifically the first entry} for the sake of efficiency (i.e. $i=1, x= 0.1 \hspace{0.5cm} i=2, x = 0.01, etc.$). This is a standard practice for looking at error trends. We were consistent with our choice, so whatever error that this may have imposed, we were at least consistent with this and can account it to systematic error. We then conducted multiple trials utilizing values of $i$ ranging from $i=0$ to $i=8$. Or, step sizes ranging from $10^{-6} \rightarrow 10^{-8}$. The results we got are plotted in \textbf{Figure 2}.
 
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{PHY480_P1_RerrvSs.png}
@@ -253,14 +254,42 @@ For each step length, we saw that the error was pretty much a constant value. Th
 	\label{fig:errorplot}
 \end{figure}
 
-
+\newpage
 \subsection{LU Decomposition Comparison}
+We then, as part of our work, wanted to work through this problem but utilizing LU decomposition. The process of LU decomposition is describe in the process in our algorithms section. For further discussion on this topic, see (reference to textbook that describes this process). 
 
+The code that we used to set up the LU decomposition is described in \textbf{Figure 3}.
 
+\begin{figure}[h!]
+	\includegraphics[width = \linewidth]{LUcode.png}
+	\caption{Our Sample code in Python that details the process of setting up our matrices and then performing the LU decomposition. This process also tracks the time needed to complete the program.}
+	\label{fig:LUcode}
+\end{figure}
+
+To make this matrix, we actually took some code from online to initialize the tridiagonal matrix. The code was obtained from (reference). Basically, what the code does is it doesn't make a matrix, as a nxn matrix would take a massive amount of memory, so it creates 3 arrays, which correspond to the 3 diagonals that have non-zero numbers within the tridiagonal matrix. Much of the code is actually to create the matrix, and there is a module in numpy which actually does the LU-decomposition, so we didn't have to hard code the process in. But to see how long this process takes, we used the time.clock function from the time module and took the difference in times between the end of initializing the matrix and completing the LU-decomposition process. Then we ran the code 100 times and made a scatter plot of the time this took. We took the average time and found that to make a 1000x1000 matrix, it took an average of about .06 s to complete the code.
+
+\begin{figure}
+	\includegraphics[width = \linewidth]{timeplot.png}
+	\caption{The plot above shows the trials for LU decomposition that we ran to calculate the time that it takes to achieve our numerical results. The x-axis denotes the trial number (just an integer associated with trial 1,2,3,... etc.) and the y-axis was the time that the program took to complete in seconds. The final result was an average time over 100 trials.}
+\end{figure}
+
+The LU decomposition of the matrix was then used to solve for the solution to the differential equation as we did using our algorithms in our earlier code. While this may seem like an incredibly fast process, but the true difference became noticeable when we looked at larger matrices. For the $10^{4}$x$10^{4}$ and $10^{5}$x$10^{5}$ cases, the amount of memory required ot complete the calculations and the time necessary to compile the code caused errors in our computer systems. Thus, we saw the fatal error of this approach. For our general case using simplified algorithms, we were able to effectively solve the differential equations for matrices up to the order of $10^{8}$x$10^{8}$ case without issue. The amount of time and memory required to use LU decomposition for the sake of solving differential equations of this form make this an ineffective method. 
+
+Also, fun fact, it takes 42 minutes, roughly, to compile the $10^{5}$ square matrix case.
+
+\newpage
 \section{Conclusions}
 
 
 \section{References}
+\begin{enumerate}
+	\item  Block tridiagonal matrix python. (n.d.). Retrieved January 27, 2017, from http://stackoverflow.com/questions\\/5842903/block-tridiagonal-matrix-python
+	
+	\item https://github.com/CompPhysics/ComputationalPhysicsMSU , This is a github repository, which had some code in it that we used in our ipython notebooks.
+	
+	\item Press, W. H., Vetterling, W. T., Teukolsky, S. A., and Flannery, B. P. (1992). \textit{Numerical recipes in C. the art of scientific computing}. Cambridge University Press.
+\end{enumerate}
+
 
 
 \end{document}
