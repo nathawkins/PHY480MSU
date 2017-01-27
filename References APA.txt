@@ -1,2 +1,5 @@
 Block tridiagonal matrix python. (n.d.). Retrieved January 27, 2017, from http://stackoverflow.com/questions/5842903/block-tridiagonal-matrix-python
 
+https://github.com/CompPhysics/ComputationalPhysicsMSU , This is a github repository, which had some code in it that we used in our ipython notebooks.
+
+Press, W. H., Vetterling, W. T., Teukolsky, S. A., & Flannery, B. P. (1992). Numerical recipes in C. the art of scientific computing. Cambridge University Press.
