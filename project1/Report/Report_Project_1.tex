@@ -15,7 +15,7 @@
 \maketitle
 
 \begin{abstract}
-	The aim of this project is two-fold: firstly to familiarize ourselves with some computational practices and the use of C++ coding methods (i.e. dynamic memory allocation, compiling of cpp files, etc.) as well as testing the limits of machine accuracy, and second to perform computations using vector and matrix operations in order to solve mathematical problems. We will be comparing the efficiency of use of vectors versus matrices in our solving of these problems.
+The aim of this project is two-fold: primarily we aim to evaluate the limits of machine accuracy in the context of solving differential equations, and it functions as an introduction to problem solving in C++. We will be comparing the efficiency of vector and matrix methods of storage with respect to computation time while exercising basic C++ skills (i.e. dynamic memory allocation, compiling of cpp files, etc.). 
 \end{abstract}
 %The above is the abstract. Marked for return to add additional details.
 
@@ -69,7 +69,7 @@ In doing so, our mathematics looked something like the following:
 
 In our case we will assume  that the source term is 
 $f(x) = 100e^{-10x}$, and keep the same interval and boundary  conditions. Then the above differential equation
-has a closed-form  solution given by $u(x) = 1-(1-e^{-10})x-e^{-10x}$. We will compare
+has a closed-form  solution given by \\$u(x) = 1-(1-e^{-10})x-e^{-10x}$. We will compare
 our numerical solution with this result in the future exercise.
 
 We fed the program an input value $i$, which was then used to determine $x$ and the step size $h$. We did this by defining the variables as follows
@@ -107,7 +107,7 @@ and $\tilde{b}_i=h^2f_i$.  A can be derived by looking at the formula for the ap
 The reason for the conversion from a matrix to vectors comes about in our number of floating point operations (FLOPS). In using the matrix approximation, we were looking at (reference) $~\frac{2}{3}n^{3}$ FLOPS in calculating our solutions. However, in being able to reduce this down to a vector problem, we managed to reduced our calculations to $9n$, and then further to $4n$, again to be discussed in the next section. The short of this discussion is that we were able to reduce our floating point operations by two orders of magnitude. In the sense of computational efficiency, this makes for much smarter problem solving and much more effective computation. 
 
 \subsection{Algorithms}
-The algorithms that we implemented in the solving of this problem are as follows. We denote the dioagonal elements as $d[i]$, the solution values as $u[i]$, and the values of the function as $f[i]$. The problem starts when look at a general case for a $4x4$ matrix:
+The algorithms that we implemented in the solving of this problem are as follows. We denote the dioagonal elements as $d[i]$, the solution values as $u[i]$, and the values of the function as $f[i]$. The problem starts when look at a general case for a $4$x$4$ matrix:
 
 \[
 \mathbf{A} = \begin{bmatrix}
@@ -115,20 +115,17 @@ d_{1}& e_{1}& 0& 0& \\
 e_{1}& d_{2}& e_{2}& 0& \\
 0& e_{2}& d_{3}& e_{3}& \\
 0& 0& e_{3}& d_{4}& \\
-
 \end{bmatrix},
-\]
-
-\[
+\
+\
 \mathbf{u} = \begin{bmatrix}
 u_{1}\\
 u_{2} \\
 u_{3}\\
 u_{4}\\
 \end{bmatrix},
-\]
-
-\[
+\
+\
 \mathbf{f} = \begin{bmatrix}
 f_{1}\\
 f_{2} \\
@@ -212,7 +209,7 @@ Now, we can perform the same operation and multiply the second row by $\frac{e_{
 \end{bmatrix}
 \]
 
-At this point, we can begin the process of forward substitution and equate $\tilde{d_{4}} * u_{4} = \tilde{f}_{4}$. Using this value, we can solve for $u_{4}$ and then solve $\tilde{d_{3}} * u_{3} + \tilde{d_{4}} * u_{4} = \tilde{f}_{3}$ for $u_{3}$, and so on and so forth. With pre-populated arrays for $u$ and $f$, we now have our solution. This process yields the algorithms used in our program.
+At this point, we can begin the process of forward substitution and equate $\tilde{d_{4}} * u_{4} = \tilde{f}_{4}$. Using this value, we can solve for $u_{4}$ and then solve $\tilde{d_{3}} * u_{3} + \tilde{d_{4}} * u_{4} = \tilde{f}_{3}$ for $u_{3}$, and so on and so forth. With pre-populated arrays for $u$ and $f$, we now have our solution. We can now extend this process to a more general case for a square matrix of any size. This process yields the algorithms used in our program.
 
 
 \begin{align}
@@ -231,6 +228,13 @@ u_{i} &= \frac{	\tilde{f}_{i} + u_{i+1}}{d_{3}}
 
 Thus, we see a reduced floating point operation count down to $\approx 4n$. This is where the efficiency of this approach really becomes evident. 
 
+Some examples of our code can be seen below:
+\begin{figure}[h!]
+	\includegraphics[width=\linewidth]{codesample.png}
+	\caption{The figure above shows the iterative loops that we used in C++ to initialize these quantities and calculate further ones. Note the simplified algorithms were used in our code to reduce floating point operations.}
+	\label{fig:codesample}
+\end{figure}
+
 \subsection{Problem 1c}
 
 \subsection{Relative Error}
@@ -241,7 +245,7 @@ We calculated the relative error in the data set $i=1,\dots, n$,by setting up
 {u_i}\right|\right),
 \]
 as function of $log_{10}(h)$ for the function values $u_i$ and $v_i$.
-For each step length, we saw that the error was pretty much a constant value. That meaning that for each value of $x$, the relative error was approximately the exact same. Since the error was the exact same for all x values, we elected to choose only one points error from each trial. However, we elected to choose the first value in each trial for our error (i.e. $i=1, x= 0.1 \hspace{0.5cm} i=2, x = 0.01, etc.$). We were consistent with our choice, so whatever error that this may have imposed, we were at least consistent with this. We then conducted multiple trials utilizing values of $i$ ranging from $i=0$ to $i=8$. The results we got are below:
+For each step length, we saw that the error was pretty much a constant value. That meaning that for each value of $x$, the relative error was approximately the exact same. Since the error was the exact same for all x values, we elected to sample only one error entry \textbf{ specifically the first entry} for the sake of efficiency (i.e. $i=1, x= 0.1 \hspace{0.5cm} i=2, x = 0.01, etc.$). We were consistent with our choice, so whatever error that this may have imposed, we were at least consistent with this. We then conducted multiple trials utilizing values of $i$ ranging from $i=0$ to $i=8$. The results we got are below:
 
 \begin{figure}[h!]
 	\includegraphics[width=\linewidth]{PHY480_P1_RerrvSs.png}
@@ -250,7 +254,13 @@ For each step length, we saw that the error was pretty much a constant value. Th
 \end{figure}
 
 
-\subsection{Problem 1e}
+\subsection{LU Decomposition Comparison}
+
+
+\section{Conclusions}
+
+
+\section{References}
 
 
 \end{document}
