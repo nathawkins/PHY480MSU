@@ -24,7 +24,7 @@ The aim of this project is two-fold: primarily we aim to evaluate the limits of 
 	Before we begin, although C++ will be used for some parts of this project in order to learn the language, the majority of our coding will be done in Python. The three of us have experience in using this language and we decided that it was best to play to our strengths in using the coding language we are most comfortable with. We will do some work with C++ and a discussion of this will be provided in our report. 
 	
 	\subsection{Mathematical Motivation}
-		The motivation behind this project is simple: Many important differential equations in  Science can be written as 	linear second-order differential equations
+		The motivation behind this project is simple: Many important differential equations in science can be written as 	linear second-order differential equations
 		\begin{equation*}
 		\frac{d^2y}{dx^2}+k^2(x)y = f(x),
 		\end{equation*}
@@ -60,9 +60,7 @@ The aim of this project is two-fold: primarily we aim to evaluate the limits of 
 
 \section{Solution}
 \subsection{Problem Set-Up}
-In this project we solved the one-dimensional Poisson equation with Dirichlet boundary conditions by rewriting it as a set of linear equations.
-
-In doing so, our mathematics looked something like the following:
+In this project we solved the one-dimensional Poisson equation with Dirichlet boundary conditions by rewriting it as a set of linear equations written as:
 
 \begin{equation*}
 -u''(x) = f(x), \hspace{0.5cm} x\in(0,1), \hspace{0.5cm} u(0) = u(1) = 0.
@@ -256,7 +254,7 @@ For each step length, we saw that the error was pretty much a constant, meaning 
 
 \newpage
 \subsection{LU Decomposition Comparison}
-We then, as part of our work, wanted to work through this problem but utilizing LU decomposition. The process of LU decomposition is describe in the process in our algorithms section. For further discussion on this topic, see (reference to textbook that describes this process). 
+We then solved this problem again but with a different technique: LU decomposition. The process of LU decomposition is described in our algorithms section. For further discussion on this topic, see (reference to textbook that describes this process). 
 
 The code that we used to set up the LU decomposition is described in \textbf{Figure 3}.
 
@@ -266,7 +264,7 @@ The code that we used to set up the LU decomposition is described in \textbf{Fig
 	\label{fig:LUcode}
 \end{figure}
 
-To make this matrix, we actually took some code from online to initialize the tridiagonal matrix. The code was obtained from (reference). Basically, what the code does is it doesn't make a matrix, as a nxn matrix would take a massive amount of memory, so it creates 3 arrays, which correspond to the 3 diagonals that have non-zero numbers within the tridiagonal matrix. Much of the code is actually to create the matrix, and there is a module in numpy which actually does the LU-decomposition, so we didn't have to hard code the process in. But to see how long this process takes, we used the time.clock function from the time module and took the difference in times between the end of initializing the matrix and completing the LU-decomposition process. Then we ran the code 100 times and made a scatter plot of the time this took. We took the average time and found that to make a 1000x1000 matrix, it took an average of about .06 s to complete the code.
+To make this matrix, we actually took some code from online to initialize the tridiagonal matrix. The code was obtained from (reference). The code doesn't make an nxn matrix as that would take a massive amount of memory. Instead it creates 3 arrays, which correspond to the 3 diagonals that have non-zero numbers within the tridiagonal matrix. Much of the code is to create the matrix, and there is a module in numpy which does the LU-decomposition, so we didn't have to hard code the process in. To see how long this process takes, we used the time.clock function from the time module and took the difference in times between the end of initializing the matrix and completing the LU-decomposition process. Then we ran the code 100 times and made a scatter plot of the time this took. We took the average time and found that to make a 1000x1000 matrix, it took an average of about .06 s to complete the code.
 
 \begin{figure}
 	\includegraphics[width = \linewidth]{timeplot.png}
