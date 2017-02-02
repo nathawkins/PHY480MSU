@@ -15,12 +15,12 @@
 \maketitle
 
 \begin{abstract}
-The aim of this project is two-fold: primarily we aim to evaluate the limits of machine accuracy in the context of solving differential equations, and it functions as an introduction to problem solving in C++. We will be comparing the efficiency of vector and matrix methods of storage with respect to computation time while exercising basic C++ skills (i.e. dynamic memory allocation, compiling of .cpp files, etc.). 
+The aim of this project is two-fold: primarily we aim to evaluate the limits of machine accuracy in the context of solving differential equations, and it functions as an introduction to problem solving in C++. We will be comparing the efficiency of vector and matrix methods of storage with respect to computation time while exercising basic C++ skills (i.e. dynamic memory allocation, compiling of .cpp files, etc.). What we found through our analysis is that the specialized numerical algorithms are more efficient for solving the given ODE. 
 \end{abstract}
 %The above is the abstract. Marked for return to add additional details.
 
 \section{Introduction}
-	Before we begin, although C++ will be used for some parts of this project in order to learn the language, the majority of our coding will be done in Python. Our group has experience in using this language and we decided that it was best to use the coding language we are most comfortable with. We will do some work with C++ and a discussion of this will be provided in our report. 
+	Before we begin, although C++ will be used for some parts of this project in order to learn the language, the majority of our coding will be done in Python. Our group has experience in using this language and we decided that it was best to use the coding language we are most comfortable with. We will do some work with C++ and a discussion of this will be provided in our report. This work is relevant because maximizing computational efficiency becomes critical when it comes to solving large systems of equations. We will begin by discussing the mathematical motivation behind the problem of interest. Then, we will walk through the derivation of our numerical algorithms and discuss the results of relative error that comes from the use of our numerical methods, as well as a comparison between our methods and LU decomposition.
 	
 	\subsection{Mathematical Motivation}
 		The motivation behind this project is simple: Many important differential equations in science can be written as 	linear second-order differential equations
@@ -306,7 +306,7 @@ To make this matrix, we took some code from online to initialize the tridiagonal
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width = 9cm]{LU_N_comparison_graph.png}
-	\caption{The plot above shows the trials for LU decomposition that we ran to calculate the time that it takes to achieve our numerical results. The x-axis denotes the trial number (just an integer associated with trial 1,2,3,... etc.) and the y-axis was the time that the program took to complete in seconds. The final result was an average time over 100 trials. Note, the size of the matrix is denoted by the color given in the key. The $10^{3}$ sized matrix timed out and Python was unable to compile it.}
+	\caption{The plot above shows the trials for LU decomposition that we ran to calculate the time that it takes to achieve our numerical results. The x-axis denotes the trial number (just an integer associated with trial 1,2,3,... etc.) and the y-axis was the time that the program took to complete in seconds. The final result was an average time over 20 trials. Note, the size of the matrix is denoted by the color given in the key. The $10^{3}$ sized matrix timed out and Python was unable to compile it.}
 \end{figure}
 
 
@@ -347,7 +347,7 @@ In the LU decomposition method, we saw that for $10^{1}$ and $10^{2}$ matrices, 
 
 \section{Concluding Remarks}
 The numerical ODE solver performed as expected, it showed increasing accuracy up until the relative error began to approach $10^{-12}$. At that point the truncation errors of the machine began to accumulate, decreasing the overal accuracy. 
-By using the algorithmic tricks we discussed in class we could reduce the total computations to the order of N. this resulted in the vector method being much faster than the LU analogue, so much so as to give several orders of increased accuracy for comparable computation time.  
+By using the algorithmic tricks we discussed in class we could reduce the total computations to the order of N. this resulted in the vector method being much faster than the LU analogue, so much so as to give several orders of increased accuracy for comparable computation time.  We also have discovered through some cross-platform work that C++ exceeds Python in terms of computational efficiency. We executed our specialized algorithms in C++ in order ot achieve maximal efficiency even at large systems. In working with Python to perform the LU decomposition, we noted computation time was significantly longer for a smaller number of computations. Though we do recognize there are some cross-platform issues here, we find that an important discovery of this problem was in recognizing that C++ exceeds Python in regards to computational efficiency.
 
 \section{References}
 \begin{enumerate}
