@@ -20,7 +20,7 @@ The aim of this project is two-fold: primarily we aim to evaluate the limits of 
 %The above is the abstract. Marked for return to add additional details.
 
 \section{Introduction}
-	Before we begin, although C++ will be used for some parts of this project in order to learn the language, the majority of our coding will be done in Python. The three of us have experience in using this language and we decided that it was best to play to our strengths in using the coding language we are most comfortable with. We will do some work with C++ and a discussion of this will be provided in our report. 
+	Before we begin, although C++ will be used for some parts of this project in order to learn the language, the majority of our coding will be done in Python. Our group has experience in using this language and we decided that it was best to play to our strengths in using the coding language we are most comfortable with. We will do some work with C++ and a discussion of this will be provided in our report. 
 	
 	\subsection{Mathematical Motivation}
 		The motivation behind this project is simple: Many important differential equations in science can be written as 	linear second-order differential equations
@@ -46,7 +46,7 @@ The aim of this project is two-fold: primarily we aim to evaluate the limits of 
 		\frac{d^2\phi}{dr^2}= -4\pi r\rho(r).
 		\end{equation*}
 		The inhomogeneous term $f$ or source term is given by the charge distribution
-		$\rho$  multiplied by $r$ and the constant $-4\pi$.
+		$\rho$  multiplied by radius $r$ and the constant $-4\pi$.
 		
 		We will rewrite this equation by letting $\phi\rightarrow u$ and 
 		$r\rightarrow x$. 
@@ -70,7 +70,7 @@ $f(x) = 100e^{-10x}$, and keep the same interval and boundary  conditions. Then 
 has a closed-form  solution given by \\$u(x) = 1-(1-e^{-10})x-e^{-10x}$. We will compare
 our numerical solution with this result in the future exercise.
 
-We fed the program an input value $i$, which was then used to determine $x$ and the step size $h$. We did this by defining the variables as follows
+We fed the program an input value $i$, which was then used to determine $x$ and the step size $h$. We defined these values as follows:
 \begin{equation*}
 i = [input], \hspace{0.5cm} n = 10^{i},\hspace{0.5cm}  h = \frac{1.0}{n}
 \end{equation*}
@@ -83,7 +83,7 @@ where $f_i=f(x_i)$.
 
 
 
-We began with a tridiagonal matrix, A, and transformed the problem into the following:
+We began with a tridiagonal matrix, $\mathbf{A}$, and transformed the problem into the following:
 
 \begin{equation*}
 \mathbf{A}\mathbf{v} = \tilde{\mathbf{b}},
@@ -100,7 +100,7 @@ where $\mathbf{A}$ is an $n\times n$  tridiagonal matrix which we rewrite as
 0&\dots    &  & 0  &-1 & 2 \\
 \end{bmatrix},
 \]
-and $\tilde{b}_i=h^2f_i$.  A can be derived by looking at the formula for the approximation of the second derivative. Note how the $v_{i+1}$ and the $v_{i-1}$ terms have a coefficient of $-1$. This is where the off diagonal elements come from in our matrix A. Since the two off diagonal entries are equivalent, we can approximate them into one vector, $e$. However, since all of the entries are -1, we decided to not allocate memory to this. Instead, we simplified our algorithm to account for these values. We will discuss our problem solving algorithms in the following section.
+and $\tilde{b}_i=h^2f_i$.  $\mathbf{A}$ can be derived by looking at the formula for the approximation of the second derivative. Note how the $v_{i+1}$ and the $v_{i-1}$ terms have a coefficient of $-1$. This is where the off diagonal elements come from in our matrix A. Since the two off diagonal entries are equivalent, we can approximate them into one vector, $e$. However, since all of the entries are -1, we decided to not allocate memory to this. Instead, we simplified our algorithm to account for these values. We will discuss our problem solving algorithms in the following section.
 
 The reason for the conversion from a matrix to vectors comes about in our number of floating point operations (FLOPS). In using the matrix approximation, we were looking at (reference) $~\frac{2}{3}n^{3}$ FLOPS in calculating our solutions. However, in being able to reduce this down to a vector problem, we managed to reduced our calculations to $9n$, and then further to $4n$, again to be discussed in the next section. The short of this discussion is that we were able to reduce our floating point operations by two orders of magnitude. In the sense of computational efficiency, this makes for much smarter problem solving and much more effective computation. 
 
