@@ -5,4 +5,9 @@ goals of the project:
  conclusions?
  cpp is nifty:
      v fast but v hard
-     
+
+
+
+ concluding remarks
+The numerical ODE solver performed as expected by producing increasing accuracy up until the relative error began to approach X. At that point the truncation errors of the machine began to produce increasing 
+ By using the algorithmic tricks we discussed in class we could reduce the total computations to the order of N. this resulted in the vector method being much faster than the LU analogue, so much so as to give several orders of increased accuracy for comparable computation time.  
