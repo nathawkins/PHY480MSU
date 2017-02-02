@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  2 FEB 2017 17:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  2 FEB 2017 17:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -431,34 +431,35 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ) [1
 
 {/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 230.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 231.
 
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 230.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 230.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 231.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 231.
 
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 230.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 231.
  [3]
 <PHY480_P1_RerrvSs.png, id=26, 393.8715pt x 272.4579pt>
 File: PHY480_P1_RerrvSs.png Graphic file (type png)
 
 <use PHY480_P1_RerrvSs.png>
-Package pdftex.def Info: PHY480_P1_RerrvSs.png used on input line 254.
+Package pdftex.def Info: PHY480_P1_RerrvSs.png used on input line 255.
 (pdftex.def)             Requested size: 469.75502pt x 324.96892pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[4] (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
+[4] [5 <./PHY480_P1_RerrvSs.png>]
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (./LU_decomp.py
@@ -466,48 +467,47 @@ Overfull \hbox (4.2498pt too wide) in paragraph at lines 12--13
 [][][][][][][][][][][][][][][][][][][] 
  []
 
-[5 <./PHY480_P1_RerrvSs.png>] [6])
-<LU_N_comparison_graph.png, id=39, 398.2077pt x 282.5757pt>
+[6]) [7] <LU_N_comparison_graph.png, id=43, 398.2077pt x 282.5757pt>
 File: LU_N_comparison_graph.png Graphic file (type png)
 
 <use LU_N_comparison_graph.png>
-Package pdftex.def Info: LU_N_comparison_graph.png used on input line 270.
+Package pdftex.def Info: LU_N_comparison_graph.png used on input line 306.
 (pdftex.def)             Requested size: 469.75502pt x 333.35881pt.
- [7] [8 <./LU_N_comparison_graph.png>]
-Overfull \hbox (21.94014pt too wide) in paragraph at lines 284--285
+ [8 <./LU_N_comparison_graph.png>] [9]
+Overfull \hbox (21.94014pt too wide) in paragraph at lines 344--345
 []\OT1/cmr/m/n/10 (-20) Block tridi-ag-o-nal ma-trix python. (n.d.). Re-trieved
  Jan-uary 27, 2017, from http://stackoverflow.com/questions 
  []
 
-[9] (./Report_Project_1.aux) ) 
+[10] (./Report_Project_1.aux) ) 
 Here is how much of TeX's memory you used:
- 6945 strings out of 493014
- 100634 string characters out of 6133351
- 257712 words of memory out of 5000000
+ 6949 strings out of 493014
+ 100666 string characters out of 6133351
+ 257105 words of memory out of 5000000
  10258 multiletter control sequences out of 15000+600000
- 19572 words of font info for 104 fonts, out of 8000000 for 9000
+ 19674 words of font info for 106 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,10n,43p,905b,1631s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2016/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmex10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmmi7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr17.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr5.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.
-pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.p
-fb>
-Output written on Report_Project_1.pdf (9 pages, 217449 bytes).
+ 41i,10n,43p,905b,1627s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2016/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmex10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr17.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr5.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7
+.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.
+pfb>
+Output written on Report_Project_1.pdf (10 pages, 223366 bytes).
 PDF statistics:
- 99 PDF objects out of 1000 (max. 8388607)
- 68 compressed objects within 1 object stream
+ 102 PDF objects out of 1000 (max. 8388607)
+ 70 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  16907 words of extra memory for PDF output out of 17280 (max. 10000000)
 
