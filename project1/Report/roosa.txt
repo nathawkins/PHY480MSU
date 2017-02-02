@@ -1,2 +1,8 @@
-maybe someday this will be filled with something useful
-unlikey
+hey look maybe this will be usefull:
+goals of the project:
+-machine accuracy
+-problem solving in cpp
+ conclusions?
+ cpp is nifty:
+     v fast but v hard
+     
