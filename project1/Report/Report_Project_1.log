@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  2 FEB 2017 17:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  2 FEB 2017 17:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -474,7 +474,7 @@ File: LU_N_comparison_graph.png Graphic file (type png)
 Package pdftex.def Info: LU_N_comparison_graph.png used on input line 306.
 (pdftex.def)             Requested size: 469.75502pt x 333.35881pt.
  [8 <./LU_N_comparison_graph.png>] [9]
-Overfull \hbox (21.94014pt too wide) in paragraph at lines 344--345
+Overfull \hbox (21.94014pt too wide) in paragraph at lines 345--346
 []\OT1/cmr/m/n/10 (-20) Block tridi-ag-o-nal ma-trix python. (n.d.). Re-trieved
  Jan-uary 27, 2017, from http://stackoverflow.com/questions 
  []
@@ -504,7 +504,7 @@ mr9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
 10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7
 .pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.
 pfb>
-Output written on Report_Project_1.pdf (10 pages, 223366 bytes).
+Output written on Report_Project_1.pdf (10 pages, 225125 bytes).
 PDF statistics:
  102 PDF objects out of 1000 (max. 8388607)
  70 compressed objects within 1 object stream
