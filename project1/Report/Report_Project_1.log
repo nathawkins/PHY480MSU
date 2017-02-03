@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  2 FEB 2017 18:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  3 FEB 2017 00:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -471,23 +471,27 @@ Overfull \hbox (4.2498pt too wide) in paragraph at lines 3--4
 File: LU_N_comparison_graph.png Graphic file (type png)
 
 <use LU_N_comparison_graph.png>
-Package pdftex.def Info: LU_N_comparison_graph.png used on input line 308.
+Package pdftex.def Info: LU_N_comparison_graph.png used on input line 355.
 (pdftex.def)             Requested size: 256.0748pt x 181.7231pt.
- [7 <./LU_N_comparison_graph.png>]
-Overfull \hbox (21.94014pt too wide) in paragraph at lines 354--355
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[7] [8 <./LU_N_comparison_graph.png>]
+Overfull \hbox (21.94014pt too wide) in paragraph at lines 401--402
 []\OT1/cmr/m/n/10 (-20) Block tridi-ag-o-nal ma-trix python. (n.d.). Re-trieved
  Jan-uary 27, 2017, from http://stackoverflow.com/questions 
  []
 
-[8] (./Report_Project_1.aux) ) 
+[9] (./Report_Project_1.aux) ) 
 Here is how much of TeX's memory you used:
  6932 strings out of 493014
  100452 string characters out of 6133351
- 254613 words of memory out of 5000000
+ 255166 words of memory out of 5000000
  10235 multiletter control sequences out of 15000+600000
  19827 words of font info for 109 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,10n,43p,1036b,1629s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,10n,43p,1036b,1627s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/pub
@@ -504,10 +508,10 @@ r9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
 0.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.
 pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.p
 fb>
-Output written on Report_Project_1.pdf (8 pages, 225227 bytes).
+Output written on Report_Project_1.pdf (9 pages, 227377 bytes).
 PDF statistics:
- 96 PDF objects out of 1000 (max. 8388607)
- 66 compressed objects within 1 object stream
+ 99 PDF objects out of 1000 (max. 8388607)
+ 68 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  16907 words of extra memory for PDF output out of 17280 (max. 10000000)
 

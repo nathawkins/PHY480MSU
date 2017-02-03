@@ -15,7 +15,7 @@
 \maketitle
 
 \begin{abstract}
-The aim of this project is two-fold: primarily we aim to evaluate the limits of machine accuracy in the context of solving differential equations, and it functions as an introduction to problem solving in C++. We will be comparing the efficiency of vector and matrix methods of storage with respect to computation time while exercising basic C++ skills (i.e. dynamic memory allocation, compiling of .cpp files, etc.). What we found through our analysis is that the specialized numerical algorithms are more efficient for solving the given ODE. 
+The aim of this project is two-fold: primarily we aim to evaluate the limits of machine accuracy in the context of solving differential equations, and it functions as an introduction to problem solving in C++. We will be comparing the efficiency of vector and matrix methods of storage with respect to computation time while exercising basic C++ skills (i.e. dynamic memory allocation, compiling of .cpp files, etc.). What we found through our analysis is that the specialized numerical algorithms are more efficient for solving the given ODE. The results for the relative error follow the mathematical expectation.
 \end{abstract}
 %The above is the abstract. Marked for return to add additional details.
 
@@ -254,9 +254,56 @@ For each step length, we saw that the error was relatively constant, meaning tha
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=8cm]{PHY480_P1_RerrvSs.png}
-	\caption{Plot of Log of Relative Error. On the x-axis, we see the log of the step-size. This is equivalent to looking at which $i$ value we chose to use in order to approximate our solution. The y-axis shows the log of the relative error given in the equation above. What we see is that the log of error has a slope of approximately -2, as expected in our initial mathematic discussion. The error begins to increase again after $i=6$ or $n=10^{6}, h \approx 10^{-6}$. This is due to the truncation error that is getting overwritten by the number of bits. The increase in error can be accounted to machine error.}
+	\caption{Plot of Log of Relative Error. On the x-axis, we see the log of the step-size. This is equivalent to looking at which $i$ value we chose to use in order to approximate our solution. The y-axis shows the log of the relative error given in the equation above. What we see is that the log of error has a slope of approximately -2, as expected in our initial mathematic discussion. The error begins to increase again after $i=6$ or $n=10^{6}, h \approx 10^{-6}$. This is due to the truncation error that is getting overwritten by the number of bits. The increase in error can be accounted to machine error. Note that the slope of the plot is roughly -2.}
 	\label{fig:errorplot}
 \end{figure}
+
+The results of our relative error is show in the table below.
+
+\begin{center}
+	Relative Error vs. Step Size (Log/Log)\\
+	\begin{tabular}{|c|c|}
+		\hline
+		Step Size, h & Relative Error\\
+		\hline
+		0.1 & -1.1005822\\
+		\hline
+		0.01 & -3.0793984\\
+		\hline
+		0.001 & -5.0791834\\
+		\hline
+		0.0001 & -7.0791816\\
+		\hline
+		$1\times10^{-5}$ & -9.0790004 \\
+		\hline
+		$1\times10^{-6}$ & -11.504028\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Note that once we get to step sizes of order $1 \times 10^{-7}$ we see an increase in relative error that is a result of truncation and machine error. We also see that the relative error is not the same for all x values as it was for step sizes of $10^{-6}$ or larger. An example of this can be seen from our "out8.txt" file below.
+
+\begin{center}
+	Output of $h=10^{-7}$ \\
+	\begin{tabular}{|c|c|c|c|}
+\hline
+     x:     &        approx:       &   exact:    &   relative error\\
+     \hline
+1.0000000E-07 & 9.0000404E-07&  9.0000404E-07  &   -10.445861\\
+2.0000000E-07  &1.8000071E-06  &1.8000071E-06     &-10.618221\\
+3.0000000E-07  &2.7000091E-06  &2.7000091E-06     &-10.895410\\
+4.0000000E-07  &3.6000102E-06  &3.6000102E-06     &-11.762087\\
+5.0000000E-07  &4.5000102E-06  &4.5000102E-06     &-11.050921\\
+6.0000000E-07  &5.4000092E-06  &5.4000092E-06     &-11.849818\\
+7.0000000E-07  &6.3000073E-06  &6.3000073E-06     &-11.206470\\
+8.0000000E-07  &7.2000043E-06  &7.2000043E-06    & -11.112482\\
+9.0000000E-07  &8.1000004E-06  &8.1000004E-06    & -11.146113\\
+1.0000000E-06  &8.9999954E-06  &8.9999954E-06    & -11.281908\\
+\hline
+	\end{tabular}
+\end{center}
+
+Note the fluctuation in the relative error. This is something for us to keep in mind moving forward with projects that at some point, the loss of numerical precision can lead to inaccuracies in our data.
 
 \newpage
 \subsection{LU Decomposition Comparison}
