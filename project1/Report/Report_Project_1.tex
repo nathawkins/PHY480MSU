@@ -102,7 +102,7 @@ where $\mathbf{A}$ is an $n\times n$  tridiagonal matrix which we rewrite as
 \]
 and $\tilde{b}_i=h^2f_i$.  $\mathbf{A}$ can be derived by looking at the formula for the approximation of the second derivative. Note how the $v_{i+1}$ and the $v_{i-1}$ terms have a coefficient of $-1$. This is where the off diagonal elements come from in our matrix $\mathbf{A}$. Since the two off diagonal entries are equivalent, we can approximate them into one vector, $e$. However, since all of the entries are -1, we decided to not allocate memory to this. Instead, we simplified our algorithm to account for these values. We will discuss our problem solving algorithms in the following section.
 
-The reason for the conversion from a matrix to vectors comes about in our number of floating point operations (FLOPS). In using the matrix approximation, we were looking at $~\frac{2}{3}n^{3}$ FLOPS in calculating our solutions$^{[2]}$. However, in being able to reduce this down to a vector problem, we managed to reduced our calculations to $9n$, and then further to $4n$, again to be discussed in the next section. The short of this discussion is that we were able to reduce our floating point operations by two orders of magnitude. In the sense of computational efficiency, this makes for much smarter problem solving and much more effective computation. 
+The reason for the conversion from a matrix to vectors comes about in our number of floating point operations (FLOPS). In using the matrix approximation, we were looking at $~\frac{2}{3}n^{3}$ FLOPS in calculating our solutions$^{[2]}$. However, in being able to reduce this down to a vector problem, we reduced our calculations to $9n$, and then further to $4n$, again to be discussed in the next section. In reducing our floating point operations by two orders of magnitude, we made computation more efficient. 
 
 
 \subsection{Algorithms}
@@ -133,7 +133,7 @@ f_{4}\\
 \end{bmatrix},
 \]
 
-And now we can look at solving $\mathbf{A}\mathbf{u} = \tilde{\mathbf{f}},$ through the process of Gaussian Elimination.$^{[2]}$ We begin by multiplying the second row of $A$ by the ratio of the terms in the first column of rows one and two. Explicitly, this looks like $\frac{e_{1}}{d_{1}}$ on both the right hand side and left hand side. This transforms the equation into the following: 
+And now we can look at solving $\mathbf{A}\mathbf{u} = \tilde{\mathbf{f}},$ through the process of Gaussian Elimination.$^{[2]}$ We begin by multiplying the second row of $\mathbf{A}$ by the ratio of the terms in the first column of rows one and two. Explicitly, this looks like $\frac{e_{1}}{d_{1}}$ on both the right hand side and left hand side. This transforms the equation into the following: 
 
 \[
 \begin{bmatrix}
@@ -248,8 +248,8 @@ We calculated the relative error in the data set $i=1,\dots, n$,by setting up
 \epsilon_i=log_{10}\left(\left|\frac{v_i-u_i}
 {u_i}\right|\right),
 \]
-as function of $log_{10}(h)$ for the function values $u_i$ and $v_i$. Here, it is important to note that the i value corresponds to the step size, $h$, as discussed above as $h = \frac{1.0}{n}$. The relative error was calculated for each power of ten, corresponding to an input value, $i$.
-For each step length, we saw that the error was relatively constant, meaning that for each value of $x$, the relative error was approximately the same. Since the error was the exact same for all x values, we elected to sample only one error entry \textit{ specifically the first entry} for the sake of efficiency (i.e. $i=1, x= 0.1 \hspace{0.5cm} i=2, x = 0.01, etc.$). This is a standard practice for looking at error trends. We were consistent with our choice, so whatever error that this may have imposed, we were at least consistent with this and can account it to systematic error. We then conducted multiple trials utilizing values of $i$ ranging from $i=0$ to $i=8$. Or, step sizes ranging from $10^{-6} \rightarrow 10^{-8}$. The results we got are plotted in \textbf{Figure 1}, the plot of Stepsize versus Relative Error below. Since we have shown minimal relative error in solving the differential equation, we have accomplished one of the goals of this problem.
+as function of $log_{10}(h)$ for the function values $u_i$ and $v_i$. Here, it is important to note that the $i$ value corresponds to the step size, $h$, as discussed above as $h = \frac{1.0}{n}$. The relative error was calculated for each power of ten, corresponding to an input value, $i$.
+For each step length, we saw that the error was relatively constant, meaning that for each value of $x$, the relative error was approximately the same. Since the error was the exact same for all x values, we elected to sample only one error entry, the first entry, for the sake of efficiency. This is a standard practice for looking at error trends. We were consistent with our choice, so whatever error that this may have imposed, we were at least consistent with this and can account it to systematic error. We then conducted multiple trials utilizing values of $i$ ranging from $i=0$ to $i=8$. Or, step sizes ranging from $10^{-1} \rightarrow 10^{-8}$. The results we got are plotted in \textbf{Figure 1}, the plot of Relative Error vs. Step Size below. Since we have shown minimal relative error in solving the differential equation, we have accomplished one of the goals of this problem.
 
 \begin{figure}[h!]
 	\centering
@@ -266,17 +266,17 @@ The results of our relative error is show in the table below.
 		\hline
 		Step Size, h & Relative Error\\
 		\hline
-		0.1 & -1.1005822\\
+		$10^{-1}$ & -1.1005822\\
 		\hline
-		0.01 & -3.0793984\\
+		$10^{-2}$ & -3.0793984\\
 		\hline
-		0.001 & -5.0791834\\
+		$10^{-3}$ & -5.0791834\\
 		\hline
-		0.0001 & -7.0791816\\
+		$10^{-4}$ & -7.0791816\\
 		\hline
-		$1\times10^{-5}$ & -9.0790004 \\
+		$10^{-5}$ & -9.0790004 \\
 		\hline
-		$1\times10^{-6}$ & -11.504028\\
+		$10^{-6}$ & -11.504028\\
 		\hline
 	\end{tabular}
 \end{center}
@@ -348,7 +348,7 @@ The code that we used to set up the LU decomposition is described below: (Python
 
 \lstinputlisting[language=Python]{LU_decomp_2.py}
 
-To make this matrix, we took some code from online to initialize the tridiagonal matrix$^{[4]}$. The code doesn't make an $n\times n$ matrix as that would take a massive amount of memory. Instead it creates 3 arrays, which correspond to the 3 diagonals that have non-zero numbers within the tridiagonal matrix. Much of the code is to create the matrix, and there is a module in numpy which does the LU-decomposition, so we didn't have to hard code the process in. To see how long this process takes, we used the time.clock function from the time module and took the difference in times between the end of initializing the matrix and completing the LU-decomposition process. Then we ran the code 100 times and made a scatter plot of the time this took. We took the average time and found that to make a $1000\times1000$ matrix, it took an average of about .10 s to complete the code.
+To make this matrix, we took some code from online to initialize the tridiagonal matrix$^{[1]}$. The code doesn't make an $n\times n$ matrix as that would take a massive amount of memory. Instead it creates 3 arrays, which correspond to the 3 diagonals that have non-zero numbers within the tridiagonal matrix. Much of the code is to create the matrix, and there is a module in numpy which does the LU-decomposition, so we didn't have to hard code the process in. To see how long this process takes, we used the time.clock function from the time module and took the difference in times between the end of initializing the matrix and completing the LU-decomposition process. Then we ran the code 100 times and made a scatter plot of the time this took. We took the average time and found that to make a $1000\times1000$ matrix, it took an average of about .10 s to complete the code.
 
 \begin{figure}[h!]
 	\centering
@@ -357,9 +357,9 @@ To make this matrix, we took some code from online to initialize the tridiagonal
 \end{figure}
 
 
-The LU decomposition of the matrix was then used to solve for the solution to the differential equation as we did using our algorithms in our earlier code. While this may seem like an incredibly fast process, but the true difference became noticeable when we looked at larger matrices. For the $10^{4}\times 10^{4}$ and $10^{5}\times 10^{5}$ cases, the amount of memory required ot complete the calculations and the time necessary to compile the code caused errors in our computer systems. Thus, we saw the fatal error of this approach. For our general case using simplified algorithms, we were able to effectively solve the differential equations for matrices up to the order of $10^{8}\times 10^{8}$ case without issue. The amount of time and memory required to use LU decomposition for the sake of solving differential equations of this form make this an ineffective method. 
+The LU decomposition of the matrix was then used to solve for the solution to the differential equation as we did using our algorithms in our earlier code. While this may seem like an incredibly fast process, the true difference became noticeable when we looked at larger matrices. For the $10^{4}\times 10^{4}$ and $10^{5}\times 10^{5}$ cases, the amount of memory required ot complete the calculations and the time necessary to compile the code caused errors in our computer systems. For example, it takes 42 minutes, roughly, to compile the $10^{5}\times 10^{5}$ case. Thus, we saw the fatal error of this approach. For our general case using simplified algorithms, we were able to effectively solve the differential equations for matrices up to the order of $10^{8}\times 10^{8}$ case without issue. The amount of time and memory required to use LU decomposition for the sake of solving differential equations of this form make this an ineffective method. 
 
-Also, fun fact, it takes 42 minutes, roughly, to compile the $10^{5}$ square matrix case.
+
 
 In comparing to our C++ code, we included a time function to keep track of the amount of time required to perform the algorithms. The results we as followed:
 
@@ -386,15 +386,15 @@ In comparing to our C++ code, we included a time function to keep track of the a
 		$10^{7}$ & 0.291171 Seconds\\
 		\hline
 	\end{tabular}
-\\ Table 1. The table below summarizes the size of the square matrices and shows the time required to perform the numerical algorithms.
+\\ Table 1. The table above summarizes the size of the square matrices and shows the time required to perform the numerical algorithms.
 
 \end{center}
 
-In the LU decomposition method, we saw that for $10^{1}$ and $10^{2}$ matrices, the computation time over 20 trials averaged out to roughly 0.1 seconds. The $10^{3}$ square matrix could not compile without producing a timeout error (Python). In performing our original numerical algorithms method, we ran through $10^{7}$ square matrices and the computational time reached roughly 0.3 seconds. This is on the same order of magnitude as the LU methods, but in matrix sizes that we couldn't even compile with the LU method. This shows us that our original approach was by far much more superior in terms of computational efficiency.
+In the LU decomposition method, we saw that for $n=10^{1}$ and $n=10^{2}$ matrices, the computation time over 20 trials averaged out to roughly 0.1 seconds. The $n=10^{3}$ square matrix could not compile without producing a timeout error (Python). In performing our original numerical algorithms method, we ran through $n=10^{7}$ square matrices and the computational time reached roughly 0.3 seconds. This is on the same order of magnitude as the Python LU methods for the $n=10^{1}$ and $n=10^{2}$ cases. This shows us that our original approach was by far much more superior in terms of computational efficiency.
 
 \section{Concluding Remarks}
 The numerical ODE solver performed as expected, it showed increasing accuracy up until the relative error began to approach $10^{-12}$. At that point the truncation errors of the machine began to accumulate, decreasing the overal accuracy. 
-By using the algorithmic tricks we discussed in class we could reduce the total computations to the order of N. this resulted in the vector method being much faster than the LU analogue, so much so as to give several orders of increased accuracy for comparable computation time.  We also have discovered through some cross-platform work that C++ exceeds Python in terms of computational efficiency. We executed our specialized algorithms in C++ in order ot achieve maximal efficiency even at large systems. In working with Python to perform the LU decomposition, we noted computation time was significantly longer for a smaller number of computations. Though we do recognize there are some cross-platform issues here, we find that an important discovery of this problem was in recognizing that C++ exceeds Python in regards to computational efficiency.
+By using the algorithmic tricks we discussed in class we could reduce the total computations to the order of $N$. This resulted in the vector method being much faster than the LU analogue, so much so as to give several orders of increased accuracy for comparable computation time.  We also have discovered through some cross-platform work that C++ exceeds Python in terms of computational efficiency. We executed our specialized algorithms in C++ in order to achieve maximal efficiency even at large systems. In working with Python to perform the LU decomposition, we noted computation time was significantly longer for a smaller number of computations. Though we do recognize there are some cross-platform issues here, we find that an important discovery of this problem was in recognizing that C++ exceeds Python in regards to computational efficiency.
 
 \section{References}
 \begin{enumerate}
