@@ -1,3 +1,5 @@
+import math as m
+
 class VerletSolver():
     def __init__(self, h, time):
         
