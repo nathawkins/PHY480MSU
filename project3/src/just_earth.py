@@ -1,7 +1,4 @@
-def computerdoitforme(t, planet1, planet2, planet3, planet4, planet5, planet6, planet7, planet8, planet9):
-    import numpy as np
-    import math
-
+def justone(t, planet1, planet2, planet3, planet4, planet5, planet6, planet7, planet8, planet9):
 
 #These are the verlate equations for making the position value update
     def coorx(xi, h,vxi, axi):
@@ -518,4 +515,4 @@ def computerdoitforme(t, planet1, planet2, planet3, planet4, planet5, planet6, p
         velocitiesz8[i+1] = vz8_i_1
         velocitiesz9[i+1] = vz9_i_1
 
-    return (coordinatesx1, coordinatesx2, coordinatesx3, coordinatesx4, coordinatesx5, coordinatesx6, coordinatesx7, coordinatesx8, coordinatesx9), (coordinatesy1, coordinatesy2, coordinatesy3, coordinatesy4, coordinatesy5, coordinatesy6, coordinatesy7, coordinatesy8, coordinatesy9), (coordinatesz1, coordinatesz2, coordinatesz3, coordinatesz4, coordinatesz5, coordinatesz6, coordinatesz7, coordinatesz8, coordinatesz9)
+    return coordinatesx1, coordinatesy1, coordinatesz1, velocitiesx1, velocitiesy1, velocitiesz1
