@@ -1,0 +1,1 @@
+Files for project 4 will be stored in this directory. The "Report" folder will contain any relevant documents to the final report (.tex file, PDF, figures, etc.), and the "src" folder will contain any relevant codes for the project.
